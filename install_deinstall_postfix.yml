@@ -1,0 +1,18 @@
+- name: Install or deinstall
+  hosts: test
+  tasks:
+  - name: run apt-get update
+    apt:
+      update_cache: yes
+  - name: install postfix package
+    apt:
+      name: postxix
+      state: present
+    tags:
+      - init postfix
+  - name: deinstall postfix package
+    apt:
+      name: postxix
+      state: absent
+    tags:
+      - drop postfix
